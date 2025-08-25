@@ -1,1 +1,10 @@
 <p>blog works!</p>
+
+<p class="bg-secondary text-white">Welcome {{ userName | uppercase }}</p>
+<p class="bg-secondary text-white">Welcome {{ userName | lowercase }}</p>
+<p  class="bg-secondary text-white" >Today's date: {{ todayDate | date:'fullDate' }}</p>
+<p class="bg-secondary text-white" >Price: {{ price | currency:'USD':'symbol':'1.2-2' }}</p>
+<p class="bg-secondary text-white" >Completion: {{ percentage | percent:'1.0-2' }}</p>
+<p class="bg-secondary text-white">User Info: {{ user | json }}</p>
+<p  class="bg-secondary text-white"> Friends: {{ userfriends | slice:0:3 }}</p> 
+<p class="bg-secondary text-white"> Customized Pipe: {{ userName | testCustomizedPipe }}</p>
