@@ -11,6 +11,7 @@ import { TestCustomizedPipePipe } from '../pipes/test-customized-pipe.pipe';
 })
 export class BlogComponent {
 
+  
   userName = 'Jane Smith';
   todayDate = new Date();
   price = 1234.56;
