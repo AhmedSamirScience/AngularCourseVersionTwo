@@ -1,5 +1,4 @@
-import { Directive,  HostListener, Input } from "@angular/core";
-import { ElementRef } from "@angular/core";
+import { Directive,  HostBinding,  HostListener, Input } from "@angular/core";
 import { EventEmitter, Output } from "@angular/core";
 
 @Directive ({
@@ -14,8 +13,6 @@ export class UserDefineDirective {
     @Input({ required: true }) color!: string;
  
     @Output () customEvent: EventEmitter<any> = new EventEmitter<any>();
-
-    constructor(private elementRef: ElementRef) {}
 
     ngOnInit() {
     }
@@ -35,10 +32,9 @@ export class UserDefineDirective {
     }
 
     
+    @HostBinding('style.transition') transition: String = 'all 0.3s ease';
+    @HostBinding('style') allStyles: String = '';
     addStyle(color: string,   padding: string,  border: string, bg: string) {
-        this.elementRef.nativeElement.style.color = color;
-        this.elementRef.nativeElement.style.padding = padding;
-        this.elementRef.nativeElement.style.border = border;
-        this.elementRef.nativeElement.style.backgroundColor = bg;
+        this.allStyles = `color: ${color}; padding: ${padding}; border: ${border}; background-color: ${bg};`;
     }
 }
