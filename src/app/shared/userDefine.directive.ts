@@ -3,7 +3,8 @@ import { EventEmitter, Output } from "@angular/core";
 
 @Directive ({
     selector: '.userdefine',    
-    standalone: true
+    standalone: true,
+    exportAs: 'directive-user'
 })
 export class UserDefineDirective {
 
