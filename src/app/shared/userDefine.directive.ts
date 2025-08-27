@@ -1,23 +1,18 @@
-import { Directive,  HostListener } from "@angular/core";
+import { Directive,  HostListener, Input } from "@angular/core";
 import { ElementRef } from "@angular/core";
+import { EventEmitter, Output } from "@angular/core";
 
 @Directive ({
     selector: '.userdefine',    
-    standalone: true, 
-    inputs: [
-       // { name: 'dynamicColor', required: true, alias: 'color' }
-        { name: 'color', required: true },
-        { name: 'padding', required: true , alias: 'pd'},
-        { name: 'border', required: true },
-        { name: 'bg', required: true },
-
-    ],
+    standalone: true
 })
 export class UserDefineDirective {
-    color!: string;
-    padding!: string;
-    border!: string;
-    bg!: string;
+
+    @Input({ required: true , alias: 'pd'}) padding!: string;
+    @Input({ required: true }) border!: string;
+    @Input({ required: true }) bg!: string;
+    @Input({ required: true }) color!: string;
+ 
 
     constructor(private elementRef: ElementRef) {}
 
