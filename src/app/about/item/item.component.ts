@@ -12,4 +12,8 @@ import { UserDefineDirective } from '../../shared/userDefine.Directive';
 })
 export class ItemComponent {
 
+  getEventFromDirective(event: any) {
+    console.log('Custom event triggered:', event);
+  } 
+
 }

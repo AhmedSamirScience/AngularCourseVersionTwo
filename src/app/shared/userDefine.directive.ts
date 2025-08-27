@@ -13,13 +13,15 @@ export class UserDefineDirective {
     @Input({ required: true }) bg!: string;
     @Input({ required: true }) color!: string;
  
+    @Output () customEvent: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(private elementRef: ElementRef) {}
 
     ngOnInit() {
     }
 
-    @HostListener('mouseenter') onMouseEnter() {
+    @HostListener('mouseenter', ['$event']) onMouseEnter(e:any) {
+        this.customEvent.emit(e);
         this.addStyle(this.color, this.padding, this.border, this.bg);
     }
 
