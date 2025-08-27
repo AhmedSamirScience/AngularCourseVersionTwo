@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+import { UserDefineDirective } from '../../shared/userDefine.Directive';
+
+
+
+@Component({
+  selector: 'app-item',
+  standalone: true,
+  imports: [UserDefineDirective],
+  templateUrl: './item.component.html',
+  styleUrl: './item.component.scss'
+})
+export class ItemComponent {
+
+}
