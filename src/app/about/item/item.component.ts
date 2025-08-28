@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserDefineDirective } from '../../shared/userDefine.Directive';
+import { UserDefineDirective } from '../../shared/userDefine.directive';
 
 
 

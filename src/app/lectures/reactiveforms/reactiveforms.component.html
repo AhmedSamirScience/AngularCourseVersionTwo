@@ -1,0 +1,33 @@
+<p>reactiveforms works!</p>
+
+<label for="username">UserName</label>
+<input 
+type="text" 
+placeholder="Enter UserName"
+id="username" 
+class="form-control"
+[(ngModel)]="usernamebta3elts"
+required
+minlength="10"
+#user_3lshan_da_elys_hail_elreference_bta3_elmodel="ngModel"
+(input) ="getData(user_3lshan_da_elys_hail_elreference_bta3_elmodel)"
+/>
+@if (user_3lshan_da_elys_hail_elreference_bta3_elmodel.touched 
+&& user_3lshan_da_elys_hail_elreference_bta3_elmodel.dirty) {
+    @if(user_3lshan_da_elys_hail_elreference_bta3_elmodel.getError('required')){
+        <p> this input is required</p>
+    }
+}
+
+
+
+<label for="userage">User Age</label>
+<input 
+    type="text" 
+    placeholder="Enter UserName"
+    id="userage" 
+    class="form-control"
+    [formControl]="userAgeBta3Elts"
+
+  
+/>

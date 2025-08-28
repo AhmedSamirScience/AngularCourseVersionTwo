@@ -4,6 +4,7 @@ import { BlogComponent } from './blog/blog.component';
 import { AboutComponent } from './about/about.component';
 import { ProductComponent } from './home/product/product.component';
 import { UserComponent } from './home/user/user.component';
+import { ReactiveformsComponent } from './lectures/reactiveforms/reactiveforms.component';
 
 
 export const routes: Routes = [
@@ -15,7 +16,8 @@ export const routes: Routes = [
     },
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'blog', component: BlogComponent, title: 'Blog Page'},
-    {path: 'about', component: AboutComponent, title: 'About Us'}, 
+    {path: 'about', component: AboutComponent, title: 'About Us'},
+    {path: 'forms', component: ReactiveformsComponent, title: 'Reactive Forms'},
     {path: '**', redirectTo: '/home', pathMatch: 'full'}   
 ];
 
