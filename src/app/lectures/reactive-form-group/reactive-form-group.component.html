@@ -2,23 +2,23 @@
 
 <div class="container">
 
-    <form [formGroup]="userData">
+    <form [formGroup]="userData" (ngSubmit)="onSubmit()">
         <div class="control">
             <label for="name">Name</label>
-            <input type="text" id="name" formControlName="name" class="form-control">
+            <input type="text" id="name" formControlName="name" class="form-control" [ngClass]="{'border-danger': name?.invalid && !name?.pristine , 'border border-success': name?.valid }">
             <div class = "validation">
-                @if (userData.get('name')?.touched && userData.get('name')?.dirty) {
-                    @if(userData.get('name')?.getError('required'))
+                @if (name?.touched && name?.dirty) {
+                    @if(name?.getError('required'))
                     {
-                        <p> input required </p>
+                        <p class="alert alert-warning"> input required </p>
                     }
-                    @if(userData.get('name')?.getError('minlength'))
+                    @if(name?.getError('minlength'))
                     {
-                        <p> input too short </p>
+                        <p class="alert alert-warning"> input too short </p>
                     }
-                    @if(userData.get('name')?.getError('maxlength'))
+                    @if(name?.getError('maxlength'))
                     {
-                        <p> input too long </p>
+                        <p class="alert alert-warning"> input too long </p>
                     }
                 }
             </div>
@@ -30,14 +30,14 @@
             <label for="email">Email</label>
             <input type="email" id="email" formControlName="email" class="form-control">
             <div class = "validation">
-                @if (userData.get('email')?.touched && userData.get('email')?.dirty) {
-                    @if(userData.get('email')?.getError('required'))
+                @if (email?.touched && email?.dirty) {
+                    @if(email?.getError('required'))
                     {
-                        <p> input required </p>
+                        <p class="alert alert-warning"> input required </p>
                     }
-                    @if(userData.get('email')?.getError('email'))
+                    @if(email?.getError('email'))
                     {
-                        <p> input must be a valid email </p>
+                        <p class="alert alert-warning"> input must be a valid email </p>
                     }
                 }
             </div>
@@ -47,14 +47,14 @@
             <label for="phone">Phone</label>
             <input type="text" id="phone" formControlName="phone" class="form-control">
             <div class = "validation">
-                @if (userData.get('phone')?.touched && userData.get('phone')?.dirty) {
-                    @if(userData.get('phone')?.getError('required'))
+                @if (phone?.touched && phone?.dirty) {
+                    @if(phone?.getError('required'))
                     {
-                        <p> input required </p>
+                        <p class="alert alert-warning"> input required </p>
                     }
-                    @if(userData.get('phone')?.getError('pattern'))
+                    @if(phone?.getError('pattern'))
                     {
-                        <p> input must be a valid phone number </p>
+                        <p class="alert alert-warning"> input must be a valid phone number </p>
                     }
                 }
             </div>
@@ -64,23 +64,24 @@
             <label for="address">Address</label>
             <input type="text" id="address" formControlName="address" class="form-control">
             <div class = "validation">
-                @if (userData.get('address')?.touched && userData.get('address')?.dirty) {
-                    @if(userData.get('address')?.getError('required'))
+                @if (address?.touched && address?.dirty) {
+                    @if(address?.getError('required'))
                     {
-                        <p> input required </p>
+                        <p class="alert alert-warning"> input required </p>
                     }
-                    @if(userData.get('address')?.getError('minlength'))
+                    @if(address?.getError('minlength'))
                     {
-                        <p> input too short </p>
+                        <p class="alert alert-warning"> input too short </p>
                     }
-                    @if(userData.get('address')?.getError('maxlength'))
+                    @if(address?.getError('maxlength'))
                     {
-                        <p> input too long </p>
+                        <p class="alert alert-warning"> input too long </p>
                     }
                 }
             </div>
         </div>
 
+        <button type="submit" class="btn btn-primary" [disabled]="!userData.valid">Submit</button>
     </form>
 
 </div>
