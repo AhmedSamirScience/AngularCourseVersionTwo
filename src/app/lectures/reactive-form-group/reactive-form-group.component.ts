@@ -16,9 +16,12 @@ export class ReactiveFormGroupComponent {
       name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}$')]),
-      address: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
-
-  })
+      //address: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
+      address: new FormGroup({
+        city: new FormControl('', [Validators.required ]),
+        street: new FormControl('', [Validators.required ]),
+      })
+    });
 
   constructor() {
      console.log(this.userData);
@@ -48,20 +51,35 @@ export class ReactiveFormGroupComponent {
   get address() {
     return this.userData.get('address');
   }
+  get city() {
+    return this.userData.get('address.city');
+  }
+
+  get street() {
+    return this.userData.get('address.street');
+  }
 
   onSubmit() {
-    console.log(this.userData.value);
-    /*this.userData.setValue({
-      name: '',
-      email: '',
-      phone: '',
-      address: ''
-    });*/
-    /*this.userData.patchValue({
-      name: '',
-      email: '',
-    });*/
-    this.userData.reset();
+    if(this.userData.valid)
+    {
+      console.log(this.userData.value);
+      /*this.userData.setValue({
+        name: '',
+        email: '',
+        phone: '',
+        address: ''
+      });*/
+      /*this.userData.patchValue({
+        name: '',
+        email: '',
+      });*/
+      this.userData.reset();
+    } else {
+      this.userData.markAllAsTouched();
+      Object.keys(this.userData.controls).forEach(key => {
+         this.userData.controls[key].markAsDirty();  
+      });
+    }
   }
 
 }

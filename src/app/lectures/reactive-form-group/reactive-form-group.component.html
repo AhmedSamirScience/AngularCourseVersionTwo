@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="control">
+        <!-- <div class="control">
             <label for="address">Address</label>
             <input type="text" id="address" formControlName="address" class="form-control">
             <div class = "validation">
@@ -79,9 +79,28 @@
                     }
                 }
             </div>
+        </div> -->
+
+        <div class="child-form" formGroupName ="address">
+            <input type="text" id="city" formControlName="city" placeholder="City" class="form-control">
+            @if(city?.touched && city?.dirty) {
+                @if(city?.getError('required'))
+                {
+                    <p class="alert alert-warning"> input required </p>
+                }
+            }
+            <input type="text" id="street" formControlName="street" placeholder="Street" class="form-control">
+            @if(street?.touched && street?.dirty) {
+                @if(street?.getError('required'))
+                {
+                    <p class="alert alert-warning"> input required </p>
+                }
+            }
+
         </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="!userData.valid">Submit</button>
+        <!-- [disabled]="!userData.valid" -->
+        <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
 
 </div>
