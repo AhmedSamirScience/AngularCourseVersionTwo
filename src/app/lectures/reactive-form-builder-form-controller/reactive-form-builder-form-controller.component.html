@@ -1,0 +1,82 @@
+<p>reactive-form-builder-form-controller works!</p>
+<div class="container">
+
+    <div class="control">  
+        <label for="username"> User Name</label>
+        <input
+        type="text"
+        placeholder="username"
+        id="username"
+        class="form-control"
+        [formControl]="username">
+
+        <div class ="validators">
+            @if(username.touched && username.getError('required'))
+            {
+                <p>Username is required</p>
+            }
+            @if (username.errors?.['minlength']) {
+                <p>min length is 5</p>
+            }
+        </div>
+     </div>
+
+
+     
+    <div class="control">  
+        <label for="userage"> User Age</label>
+        <input
+        type="text"
+        placeholder="userage"
+        id="userage"
+        class="form-control"
+        [formControl]="userage">
+
+        <div class ="validators">
+            @if(userage.touched && userage.getError('min'))
+            {
+                <p>min age 16</p>
+            }
+            @if (userage.errors?.['max']) {
+                <p>max age 30</p>
+            }
+        </div>
+     </div>
+
+
+    <div class="control">  
+        <label for="userphone"> User phone</label>
+        <input
+        type="text"
+        placeholder="userphone"
+        id="userphone"
+        class="form-control"
+        [formControl]="userphone">
+
+        <div class ="validators">
+            @if(userphone.touched && userphone.getError('pattern'))
+            {
+                <p> pattern is wrong </p>
+            }
+            </div>
+     </div>
+
+
+
+   <div class="control">  
+       <label for="useremail"> User Email</label>
+       <input
+       type="text"
+       placeholder="useremail"
+       id="useremail"
+       class="form-control"
+       [formControl]="useremail">
+
+       <div class ="validators">
+           @if(useremail.touched && useremail.getError('email'))
+           {
+               <p> email is wrong </p>
+           }
+           </div>
+    </div>
+</div>
