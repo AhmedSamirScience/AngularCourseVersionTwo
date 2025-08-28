@@ -7,6 +7,7 @@ import { UserComponent } from './home/user/user.component';
 import { ReactiveformsComponent } from './lectures/reactiveforms/reactiveforms.component';
 import { TemplateDrivenFormComponent } from './lectures/template-driven-form/template-driven-form.component';
 import { ReactiveFormBuilderFormControllerComponent } from './lectures/reactive-form-builder-form-controller/reactive-form-builder-form-controller.component';
+import { ReactiveFormGroupComponent } from './lectures/reactive-form-group/reactive-form-group.component';
 
 
 
@@ -23,6 +24,7 @@ export const routes: Routes = [
     {path: 'forms', component: ReactiveformsComponent, title: 'Reactive Forms'},
     {path: 'templateDrienForm', component: TemplateDrivenFormComponent, title: 'Template Driven Form'},
     {path: 'reactiveForm', component: ReactiveFormBuilderFormControllerComponent, title: 'Reactive Forms'},
+    {path: 'reactiveFormGroup', component: ReactiveFormGroupComponent, title: 'Reactive Form Group'},
     {path: '**', redirectTo: '/home', pathMatch: 'full'}   
 ];
 
