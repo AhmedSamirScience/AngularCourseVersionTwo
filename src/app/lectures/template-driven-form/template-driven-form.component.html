@@ -1,1 +1,66 @@
 <p>template-driven-form works!</p>
+
+<div class="container">
+    <form (ngSubmit)="submit(myFormYaSa7bi)" #myFormYaSa7bi="ngForm">
+        <ng-container>
+            <label for="username">Username</label>
+            <input type="text"
+                placeholder="username"
+                id="username" 
+                name="name"
+                [(ngModel)]="userInfo.name"
+                class="form-control"
+                #myname="ngModel"
+                required
+                minlength="3"
+                >
+                <div class="validation">
+                     <!-- && myname.dirty -->
+                    @if( myname.touched)
+                    {
+                        @if(myname.getError('required'))
+                        {
+                            <p>Name is required</p>
+                        }
+                        @if(myname.getError('minlength'))
+                        {
+                            <p>Name must be at least 3 characters</p>
+                        }
+                    }
+                </div>
+        </ng-container>
+
+        <ng-container>
+            <label for="useremail">Useremail</label>
+            <input type="text"
+                placeholder="useremail"
+                id="username" 
+                name="email"
+                [(ngModel)]="userInfo.email"
+                class="form-control"
+                #myEmail="ngModel"
+                required
+                minlength="3"
+                >
+                 <div class="validation">
+                    
+                     <!-- && myname.dirty -->
+                    @if( myEmail.touched )
+                    {
+                        @if(myEmail.getError('required'))
+                        {
+                            <p>Name is required</p>
+                        }
+                        @if(myEmail.getError('minlength'))
+                        {
+                            <p>Name must be at least 3 characters</p>
+                        }
+                    }
+                </div>
+        </ng-container>
+
+        <button class="btn btn-primary" disabled="!myFormYaSa7bi.valid">Submited</button>
+        <button class="btn btn-primary">Submission </button>
+        
+    </form>
+</div>
