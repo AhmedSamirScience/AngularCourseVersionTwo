@@ -1,19 +1,20 @@
-import { NgClass } from '@angular/common';
+import { JsonPipe, NgClass } from '@angular/common';
 import { Component} from '@angular/core';
-import { FormGroup, ReactiveFormsModule, Validators    } from '@angular/forms';
+import { AbstractControl, FormGroup, ReactiveFormsModule, Validators    } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { checkForName } from '../../validators/validation.name';
  
 @Component({
   selector: 'app-reactive-form-group',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, JsonPipe],
   templateUrl: './reactive-form-group.component.html',
   styleUrl: './reactive-form-group.component.scss'
 })
 export class ReactiveFormGroupComponent {
 
   userData: FormGroup = new FormGroup ({
-      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10), checkForName]),
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}$')]),
       //address: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]),
@@ -21,7 +22,7 @@ export class ReactiveFormGroupComponent {
         city: new FormControl('', [Validators.required ]),
         street: new FormControl('', [Validators.required ]),
       })
-    });
+    }, this.passwordNotMatch);
 
   constructor() {
      console.log(this.userData);
@@ -80,6 +81,16 @@ export class ReactiveFormGroupComponent {
          this.userData.controls[key].markAsDirty();  
       });
     }
+  }
+
+  passwordNotMatch(form: AbstractControl) {
+    const password = form.get('name')?.value;
+    const confirmPassword = form.get('email')?.value;
+
+    if (password !== confirmPassword) {
+      return { passwordNotMatch: true };
+    }
+    return null;
   }
 
 }

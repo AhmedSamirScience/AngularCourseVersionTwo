@@ -20,6 +20,10 @@
                     {
                         <p class="alert alert-warning"> input too long </p>
                     }
+                    @if(name?.getError('nameNotValid'))
+                    {
+                        <p class="alert alert-warning"> input must not contain numbers </p>
+                    }
                 }
             </div>
                 
@@ -99,6 +103,9 @@
 
         </div>
 
+        <p> {{userData?.errors | json }}</p>
+
+        <p> {{name?.errors | json }}</p>
         <!-- [disabled]="!userData.valid" -->
         <button type="submit" class="btn btn-primary" >Submit</button>
     </form>
